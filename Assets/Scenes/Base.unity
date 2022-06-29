@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Imp_0
       objectReference: {fileID: 0}
+    - target: {fileID: 1748061648923536093, guid: c3f2656397d1a6948a476081bba84efa, type: 3}
+      propertyPath: aggressionRadius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3f2656397d1a6948a476081bba84efa, type: 3}
 --- !u!1001 &51126714
