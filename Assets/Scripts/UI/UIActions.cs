@@ -20,7 +20,6 @@ public class UIActions : MonoBehaviour
 
         isRaidPickerPanelActive = false;
         zsm = GameObject.FindGameObjectWithTag(GameObjectTags.SCENE_MANAGER).GetComponent(typeof (ZraidersSceneManager)) as ZraidersSceneManager;
-        Debug.Log(zsm);
     }
 
     public void OpenInventory()
@@ -49,6 +48,7 @@ public class UIActions : MonoBehaviour
 
     public void StartRaid(int raidSettings = -1)
     {
+        DataManagerSingleton.Instance.inventorySystem.Notify();
         zsm.LoadRaid();
     }
 

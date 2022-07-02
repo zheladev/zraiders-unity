@@ -9,9 +9,9 @@ public class ItemDefinition
     public readonly int tier;
     public readonly ItemRarity rarity;
     public readonly Sprite sprite;
+    public readonly bool isStackable;
 
-
-    private ItemDefinition(string name, string description, int tier, ItemRarity rarity, string spriteName)
+    public ItemDefinition(string name, string description, int tier, ItemRarity rarity, bool isStackable, string spriteName)
     {
         this.name = name;
         this.description = description;
@@ -19,11 +19,17 @@ public class ItemDefinition
         this.rarity = rarity;
         this.sprite = Resources.Load<Sprite>($"Sprites/Items/{spriteName}");
         this.id = ItemDefinition.idCount++;
+        this.isStackable = isStackable;
     }
 
-    //TODO: stats
-    public static ItemDefinition GenItem(string name, string description, int tier, ItemRarity rarity, string spriteName)
+    public ItemDefinition(ItemDefinition idef)
     {
-        return new ItemDefinition(name, description, tier, rarity, spriteName);
+        this.name = idef.name;
+        this.description = idef.description;
+        this.tier = idef.tier;
+        this.rarity = idef.rarity;
+        this.sprite = idef.sprite;
+        this.id = idef.id;
+        this.isStackable = idef.isStackable;
     }
 }

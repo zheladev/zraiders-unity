@@ -6,17 +6,17 @@ public class DataManagerSingleton
     static DataManagerSingleton _instance = null;
     static readonly object _padlock = new object();
 
-    /// <summary>The player's current score.</summary>
     public string[] raiders = new string[] {
         "Warrior1",
         "Warrior2",
         "Warrior3"
     };
+    
     public string[] enemies = new string[] {
         "Enemy1"
     };
 
-    public EncounterData currentEncounter;
+    public InventorySystem inventorySystem;
 
     /// <summary>Awake is called when the script instance is being loaded.</summary>
     public static DataManagerSingleton Instance {
@@ -29,5 +29,10 @@ public class DataManagerSingleton
                 return _instance;
             }
         }
+    }
+
+    private DataManagerSingleton()
+    {
+        inventorySystem = new InventorySystem();
     }
 }

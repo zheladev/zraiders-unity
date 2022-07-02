@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SceneManager
   - UIActions
+  - InventoryManager
   layers:
   - Default
   - TransparentFX

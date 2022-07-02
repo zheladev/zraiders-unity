@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class ZraidersSceneManager : MonoBehaviour
 {
-
     private string currentScene;
     // Start is called before the first frame update
     void Start()
