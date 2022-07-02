@@ -1,34 +1,57 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour, IObserver
 {
     public List<UIInventorySlot> slots = new List<UIInventorySlot>();
-    public GameObject slotPrefab;
-    public Transform slotPanel;
-    
-    private InventorySystem inventorySystem;
+    [SerializeField]
+    private GameObject slotPrefab;
+    [SerializeField]
+    private GridLayoutGroup inventoryGridUI;
+    private Transform inventoryGridUITransform;
+    private InventoryManager inventoryManager;
 
     // Start is called before the first frame update
     void Awake()
     {
-        DataManagerSingleton.Instance.inventorySystem.AddItem(ItemDatabaseSingleton.Instance.GetItemById(0));
+        inventoryManager = GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager;
+        inventoryManager.Attach(this);
         //draw all prefabs
+    }
+
+    void Start()
+    {
+        inventoryGridUI = GetComponentInChildren<GridLayoutGroup>();
+        inventoryGridUITransform = inventoryGridUI.transform;
+
+        //instantiate
+        for(int i = 0; i < inventoryManager.inventorySystem.slots; i++)
+        {
+            Instantiate(slotPrefab, inventoryGridUITransform);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(DataManagerSingleton.Instance.inventorySystem.items);
+
     }
 
     void OnDestroy()
     {
-        
+        inventoryManager.Detach(this);
+        //doesn't work for some godforsaken reason
+
     }
 
     public void OnNotify(ISubject subject)
     {
-        Debug.Log("Lol notified");
+        InventoryManager im = subject as InventoryManager;
+        if (im != null) 
+        {
+            //update view
+        }
+        //inventory changed
     }
 }

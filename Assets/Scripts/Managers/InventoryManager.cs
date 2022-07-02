@@ -4,7 +4,7 @@ using UnityEngine;
 //May be redundant
 public class InventoryManager : MonoBehaviour, ISubject
 {
-    private InventorySystem inventorySystem;
+    public InventorySystem inventorySystem;
 
     List<IObserver> _observers;
 
@@ -19,6 +19,7 @@ public class InventoryManager : MonoBehaviour, ISubject
     void Start()
     {
         Debug.Log(inventorySystem);
+        Notify();
     }
 
     public void AddItem(ItemDefinition iDef)

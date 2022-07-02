@@ -1,16 +1,14 @@
 using System.Collections.Generic;
 
-public class InventorySystem : ISubject
+public class InventorySystem
 {
     public List<Item> items;
     public int slots;
 
-    List<IObserver> _observers;
-
     public InventorySystem()
     {
         items = new List<Item>();
-        slots = 30;
+        slots = 191;
     }
 
     public void AddItem(ItemDefinition iDef)
@@ -39,24 +37,6 @@ public class InventorySystem : ISubject
         if (index >= 0 && index < items.Count)
         {
             items.RemoveAt(index);
-        }
-    }
-
-    public void Attach(IObserver observer)
-    {
-        _observers.Add(observer);
-    }
-
-    public void Detach(IObserver observer)
-    {
-        _observers.Remove(observer);
-    }
-
-    public void Notify()
-    {
-        foreach (var observer in _observers)
-        {
-            observer.OnNotify(this);
         }
     }
 }
