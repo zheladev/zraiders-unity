@@ -16,6 +16,8 @@ public class DataManagerSingleton
         "Enemy1"
     };
 
+    public EncounterData currentEncounter;
+
     /// <summary>Awake is called when the script instance is being loaded.</summary>
     public static DataManagerSingleton Instance {
         get {

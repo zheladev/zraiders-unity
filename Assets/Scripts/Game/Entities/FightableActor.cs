@@ -9,11 +9,8 @@ public abstract class FightableActor : StatefulActor
 
     [SerializeField]
     protected FightableActor target;
-
     protected Rigidbody2D rigidBody;
-
-    protected CircleCollider2D attackRadiusCollider;
-
+    protected CircleCollider2D attackRadiusTriggerCollider;
     protected BoxCollider2D actorCollider;
     
     [SerializeField]
@@ -41,8 +38,9 @@ public abstract class FightableActor : StatefulActor
     void CreateColliders2D()
     {
         //attack radius
-        attackRadiusCollider = gameObject.AddComponent<CircleCollider2D>();
-        attackRadiusCollider.radius = attackRadius;
+        attackRadiusTriggerCollider = gameObject.AddComponent<CircleCollider2D>();
+        attackRadiusTriggerCollider.isTrigger = true;
+        attackRadiusTriggerCollider.radius = attackRadius;
 
         //self collider
         actorCollider = gameObject.AddComponent<BoxCollider2D>();

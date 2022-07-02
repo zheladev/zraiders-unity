@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public abstract class EnemyActor : FightableActor
 {
 
     [SerializeField]
-    protected CircleCollider2D aggressionCollider;
+    protected CircleCollider2D aggressionTriggerCollider;
 
     [SerializeField]
     protected float aggressionRadius = 1f;
@@ -24,12 +22,12 @@ public abstract class EnemyActor : FightableActor
     void CreateCollider2D()
     {
         
-        aggressionCollider = gameObject.AddComponent<CircleCollider2D>();
-        aggressionCollider.isTrigger = true;
-        aggressionCollider.radius = aggressionRadius;
+        aggressionTriggerCollider = gameObject.AddComponent<CircleCollider2D>();
+        aggressionTriggerCollider.isTrigger = true;
+        aggressionTriggerCollider.radius = aggressionRadius;
     }
 
-    private void OnCollisionEnter(Collision other) {
-        //TODO: doesn't work
+    private void OnTriggerStay2D(Collider2D other) {
+        Debug.Log("Collide");
     }
 } 

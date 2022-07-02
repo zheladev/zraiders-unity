@@ -30,5 +30,4 @@ public struct EncounterData {
     public EncounterData(int en, int rn, string s) => (enemyNumber, raiderNumber, stage) = (en, rn, s);
 
     public override string ToString() => $"{enemyNumber}, {raiderNumber}, {stage}";
-
 }

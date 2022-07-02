@@ -6,10 +6,15 @@ public class UIActions : MonoBehaviour
 {
 
     private bool isRaidPickerPanelActive;
+    private bool isInventoryActive;
     private ZraidersSceneManager zsm;
 
     [SerializeField]
     private CanvasGroup raidPickerPanelCanvasGroup; //add in editor
+
+    [SerializeField]
+    private CanvasGroup inventoryPanelCanvasGroup; //add in editor
+
     void Start()
     {
 
@@ -20,7 +25,14 @@ public class UIActions : MonoBehaviour
 
     public void OpenInventory()
     {
-        //todo
+        ToggleInventoryPanelCanvasGroup();
+    }
+
+    public void ToggleInventoryPanelCanvasGroup(bool isStartCall = false)
+    {
+        inventoryPanelCanvasGroup.alpha = isInventoryActive ? 0 : 1;
+        inventoryPanelCanvasGroup.interactable = !isInventoryActive;
+        isInventoryActive = !isInventoryActive;
     }
 
     public void ToggleRaidPanelCanvasGroup(bool isStartCall = false)

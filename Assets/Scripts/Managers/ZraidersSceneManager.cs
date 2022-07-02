@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ZraidersSceneManager : MonoBehaviour
 {
+
+    private string currentScene;
     // Start is called before the first frame update
     void Start()
     {
-        //do random shit before loading scenes
-        Debug.Log("test");
         LoadGame();
     }
 
@@ -37,11 +37,13 @@ public class ZraidersSceneManager : MonoBehaviour
     void LoadAdditively(string scene)
     {
         SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        currentScene = scene;
     }
 
     void Load(string scene)
     {
         SceneManager.LoadScene(scene);
+        currentScene = scene;
     }
 
     void BulkUnload(List<string> keepAlive, bool removeUI = false)
