@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1357350945
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 67665250, guid: cdff08cfdf35ef342b3b52ce33b66197, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -120,6 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _state: Idle
   target: {fileID: 0}
-  aggressionCollider: {fileID: 0}
-  rigidBody: {fileID: 0}
-  aggressionRadius: 200
+  attackRadius: 0.2
+  aggressionTriggerCollider: {fileID: 0}
+  aggressionRadius: 1

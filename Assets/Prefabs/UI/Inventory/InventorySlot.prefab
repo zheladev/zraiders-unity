@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3800392355185423271}
   - component: {fileID: 6043560703023013395}
   - component: {fileID: 3166959521848353013}
+  - component: {fileID: 6919926601419631271}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -26,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179042030836306458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6919926601419631271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179042030836306458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ade9846529abd4b91b841cd701b2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedItemPrefab: {fileID: 656913273010882553, guid: e2a33516c2875f4479ea36da456a3315, type: 3}
 --- !u!1 &6782898965644598654
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +101,6 @@ GameObject:
   - component: {fileID: 2150160902760957041}
   - component: {fileID: 2334971751235101360}
   - component: {fileID: 7652499959369143952}
-  - component: {fileID: 5387431192789342281}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -154,16 +167,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5387431192789342281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6782898965644598654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ade9846529abd4b91b841cd701b2b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteImage: {fileID: 3166959521848353013}

@@ -46,7 +46,6 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
     void OnDestroy()
     {
         inventoryManager.Detach(this);
-        //doesn't work for some godforsaken reason
 
     }
 
@@ -54,7 +53,7 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
     {
         if (payload.inventorySlot < slots.Count)
         {
-            (slots[payload.inventorySlot].GetComponent<UIInventorySlot>() as UIInventorySlot).UpdateItem(payload.item);
+            (slots[payload.inventorySlot].GetComponentInChildren<UIInventorySlot>() as UIInventorySlot).UpdateItem(payload.item);
         }
     }
 }
