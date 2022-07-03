@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIInventory : MonoBehaviour, IObserver
+public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
 {
     public List<UIInventorySlot> slots = new List<UIInventorySlot>();
     [SerializeField]
@@ -15,6 +15,8 @@ public class UIInventory : MonoBehaviour, IObserver
     // Start is called before the first frame update
     void Awake()
     {
+        //load resource for prefab?
+        
         inventoryManager = GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager;
         inventoryManager.Attach(this);
         //draw all prefabs
@@ -45,13 +47,8 @@ public class UIInventory : MonoBehaviour, IObserver
 
     }
 
-    public void OnNotify(ISubject subject)
+    public void OnNotify(InventoryPayload payload)
     {
-        InventoryManager im = subject as InventoryManager;
-        if (im != null) 
-        {
-            //update view
-        }
-        //inventory changed
+        Debug.Log(payload.item);
     }
 }

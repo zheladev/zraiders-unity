@@ -48,8 +48,9 @@ public class UIActions : MonoBehaviour
 
     public void StartRaid(int raidSettings = -1)
     {
-        //remove
-        (GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager).Notify();
+        //remove, payload test
+        // InventoryPayload ip = new InventoryPayload(ItemDatabaseSingleton.Instance.GetItemById(0), 0);
+        // (GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager).Notify(ip);
         zsm.LoadRaid();
     }
 
