@@ -11,24 +11,24 @@ public class InventorySystem
         slots = 191;
     }
 
-    public void AddItem(ItemDefinition iDef)
+    public void AddItem(Item item)
     {
         //TODO: check if inventory full
-        if (iDef.isStackable)
+        if (item.isStackable)
         {
-            Item _item = items.Find(i => i.id == iDef.id);
+            Item _item = items.Find(i => item.id == i.id);
             if (_item != null)
             {
                 _item.stackSize += 1;
             }
             else
             {
-                items.Add(new Item(iDef));
+                items.Add(new Item(item));
             }
         }
         else
         {
-            items.Add(new Item(iDef));
+            items.Add(new Item(item));
         }
     }
 

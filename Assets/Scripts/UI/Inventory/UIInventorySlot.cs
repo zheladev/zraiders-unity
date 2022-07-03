@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIInventorySlot : MonoBehaviour
 {
-    public ItemDefinition itemDef;
+    public Item item;
     private Image spriteImage;
     // Start is called before the first frame update
     void Awake()
@@ -15,12 +13,17 @@ public class UIInventorySlot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void UpdateItem(ItemDefinition idef)
+    public void UpdateItem(Item i)
     {
-        this.itemDef = idef;
-        if (this.itemDef == null)
+        item = i;
+        if (item == null)
         {
-            
+            spriteImage.color = Color.clear;
+        }
+        else
+        {
+            spriteImage.color = Color.white;
+            spriteImage.sprite = item.sprite;
         }
     }
 }

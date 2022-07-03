@@ -4,17 +4,20 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
 {
-    public List<UIInventorySlot> slots = new List<UIInventorySlot>();
+    public List<GameObject> slots;
     [SerializeField]
     private GameObject slotPrefab;
+
     [SerializeField]
     private GridLayoutGroup inventoryGridUI;
+
     private Transform inventoryGridUITransform;
     private InventoryManager inventoryManager;
 
     // Start is called before the first frame update
     void Awake()
     {
+        slots = new List<GameObject>();
         //load resource for prefab?
         
         inventoryManager = GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager;
@@ -30,7 +33,7 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
         //instantiate
         for(int i = 0; i < inventoryManager.inventorySystem.slots; i++)
         {
-            Instantiate(slotPrefab, inventoryGridUITransform);
+            slots.Add(Instantiate(slotPrefab, inventoryGridUITransform));
         }
     }
 
@@ -49,6 +52,9 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
 
     public void OnNotify(InventoryPayload payload)
     {
-        Debug.Log(payload.item);
+        if (payload.inventorySlot < slots.Count)
+        {
+            (slots[payload.inventorySlot].GetComponent<UIInventorySlot>() as UIInventorySlot).UpdateItem(payload.item);
+        }
     }
 }

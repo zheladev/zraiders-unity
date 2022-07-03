@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour, IObservable<InventoryPayload>
         
     }
 
-    public void AddItem(ItemDefinition iDef)
+    public void AddItem(Item iDef)
     {
         inventorySystem.AddItem(iDef);
     }
