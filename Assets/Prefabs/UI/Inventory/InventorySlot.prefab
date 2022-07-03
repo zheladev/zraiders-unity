@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0302, y: -0.0302}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 35.6255, y: 36.3252}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6043560703023013395
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12335349, g: 0.12738197, b: 0.33962262, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 2150160902760957041}
   - component: {fileID: 2334971751235101360}
   - component: {fileID: 7652499959369143952}
+  - component: {fileID: 5387431192789342281}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -153,3 +154,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5387431192789342281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782898965644598654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ade9846529abd4b91b841cd701b2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteImage: {fileID: 3166959521848353013}

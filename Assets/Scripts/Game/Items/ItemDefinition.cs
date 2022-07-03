@@ -17,7 +17,7 @@ public class ItemDefinition
         this.description = description;
         this.tier = tier;
         this.rarity = rarity;
-        this.sprite = Resources.Load<Sprite>($"Sprites/Items/{spriteName}");
+        this.sprite = Resources.Load<Sprite>("Sprites/Items/" + spriteName);
         this.id = idCount++;
         this.isStackable = isStackable;
     }

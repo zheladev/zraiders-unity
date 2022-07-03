@@ -1846,26 +1846,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3166959521848353013, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
-      propertyPath: m_Color.b
-      value: 0.33962262
-      objectReference: {fileID: 0}
-    - target: {fileID: 3166959521848353013, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
-      propertyPath: m_Color.g
-      value: 0.12738197
-      objectReference: {fileID: 0}
-    - target: {fileID: 3166959521848353013, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
-      propertyPath: m_Color.r
-      value: 0.12335349
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800392355185423271, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800392355185423271, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6782898965644598654, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
       propertyPath: m_Name
       value: InventorySlot

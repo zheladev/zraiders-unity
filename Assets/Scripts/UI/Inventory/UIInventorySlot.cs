@@ -4,11 +4,14 @@ using UnityEngine.UI;
 public class UIInventorySlot : MonoBehaviour
 {
     public Item item;
+    private Image selfImage;
+
+    [SerializeField]
     private Image spriteImage;
     // Start is called before the first frame update
     void Awake()
     {
-        spriteImage = GetComponent<Image>();
+        selfImage = GetComponent<Image>();
         UpdateItem(null);
     }
 
@@ -23,7 +26,16 @@ public class UIInventorySlot : MonoBehaviour
         else
         {
             spriteImage.color = Color.white;
-            spriteImage.sprite = item.sprite;
+            spriteImage.sprite = i.sprite;
         }
+        // if (item != null)
+        // {
+        //     spriteImage.color = Color.clear;
+        // }
+        // else
+        // {
+        //     spriteImage.color = Color.white;
+        //     spriteImage.sprite = Resources.Load<Sprite>("Sprites/Items/item1");
+        // }
     }
 }

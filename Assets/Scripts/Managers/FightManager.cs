@@ -6,7 +6,7 @@ public class FightManager : MonoBehaviour
 {
     void Awake() 
     {
-        Debug.Log(DataManagerSingleton.Instance.enemies[0]);
+        
     }
 
     // Start is called before the first frame update

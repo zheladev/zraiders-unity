@@ -33,8 +33,8 @@ public class ItemDatabaseSingleton
     private void BuildDatabase()
     {
         this.items = new List<ItemDefinition> {
-            new ItemDefinition("test", "test desc", 0, ItemRarity.Uncommon, true, "lol"),
-            new ItemDefinition("test2", "test desc", 0, ItemRarity.Uncommon, true, "lol2"),
+            new ItemDefinition("test", "test desc", 0, ItemRarity.Uncommon, true, "item1"),
+            new ItemDefinition("test2", "test desc", 0, ItemRarity.Uncommon, true, "item2"),
         };
     }
 
