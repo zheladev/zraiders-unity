@@ -8,14 +8,15 @@ public class UIInventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler,
     [SerializeField]
     private GameObject selectedItemPrefab;
     private GameObject selectedItem;
+    private CanvasGroup inventoryCanvasGroup;
 
     private Vector3 basePosition;
-    private bool isBeingDragged = false;
 
     private Image spriteImage;
     // Start is called before the first frame update
     void Awake()
     {
+        inventoryCanvasGroup = GameObject.Find("InventoryPanel").GetComponent<CanvasGroup>();
         spriteImage = GetComponent<Image>();
         UpdateItem(null);
     }
@@ -52,10 +53,10 @@ public class UIInventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler,
     {
         if (item != null)
         {
-            isBeingDragged = true;
-            selectedItem = Instantiate(selectedItemPrefab, transform, true);
-            selectedItem.GetComponent<UISelectedItem>().UpdateItem(item);
+            selectedItem = Instantiate(selectedItemPrefab, inventoryCanvasGroup.transform, false);
             selectedItem.transform.position = Input.mousePosition;
+            selectedItem.GetComponent<UISelectedItem>().UpdateItem(item);
+            
         }
     }
 
@@ -63,7 +64,6 @@ public class UIInventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler,
     {
         if (selectedItem != null)
         {
-            isBeingDragged = false;
             Destroy(selectedItem);
             selectedItem = null;
         }

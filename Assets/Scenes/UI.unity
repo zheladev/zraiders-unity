@@ -1850,5 +1850,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventorySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 6919926601419631271, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
+      propertyPath: inventoryGridLayout
+      value: 
+      objectReference: {fileID: 1446790048}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e465ce7c446fa4ea4b09c482a2de06, type: 3}
