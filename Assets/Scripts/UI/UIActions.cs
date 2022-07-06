@@ -36,6 +36,11 @@ public class UIActions : MonoBehaviour
 
     public void ToggleRaidPanelCanvasGroup(bool isStartCall = false)
     {
+        InventoryPayload ip = new InventoryPayload(ItemDatabaseSingleton.Instance.GetItemById(0), 0);
+        (GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager).Notify(ip);
+
+        InventoryPayload ip2 = new InventoryPayload(ItemDatabaseSingleton.Instance.GetItemById(1), 1);
+        (GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager).Notify(ip2);
         raidPickerPanelCanvasGroup.alpha = isRaidPickerPanelActive ? 0 : 1;
         raidPickerPanelCanvasGroup.interactable = !isRaidPickerPanelActive;
         isRaidPickerPanelActive = !isRaidPickerPanelActive;
@@ -48,12 +53,6 @@ public class UIActions : MonoBehaviour
 
     public void StartRaid(int raidSettings = -1)
     {
-        //remove, payload test
-        InventoryPayload ip = new InventoryPayload(ItemDatabaseSingleton.Instance.GetItemById(0), 0);
-        (GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager).Notify(ip);
-
-        InventoryPayload ip2 = new InventoryPayload(ItemDatabaseSingleton.Instance.GetItemById(1), 1);
-        (GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager).Notify(ip2);
         zsm.LoadRaid();
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class UIInventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
@@ -56,7 +57,8 @@ public class UIInventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler,
             selectedItem = Instantiate(selectedItemPrefab, inventoryCanvasGroup.transform, false);
             selectedItem.transform.position = Input.mousePosition;
             selectedItem.GetComponent<UISelectedItem>().UpdateItem(item);
-            
+            selectedItem.GetComponent<UISelectedItem>().selectedItemUIInventorySlot = this;
+
         }
     }
 
@@ -64,8 +66,37 @@ public class UIInventorySlot : MonoBehaviour, IDragHandler, IPointerDownHandler,
     {
         if (selectedItem != null)
         {
+            UISelectedItem selectedItemUIComponent = selectedItem.GetComponent<UISelectedItem>();
+
+            UIInventorySlot dropSlot = GetDropSlot();
+
+            Debug.Log(dropSlot);
+            if (dropSlot != null)
+            {
+                dropSlot.UpdateItem(item);
+                UpdateItem(null);
+            }
+
             Destroy(selectedItem);
             selectedItem = null;
         }
+    }
+
+#nullable enable
+    private UIInventorySlot? GetDropSlot()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        GameObject[] UIInventorySlots = GameObject.FindGameObjectsWithTag("UIInventorySlot").ToArray();
+
+        GameObject[] dropSlotArr = UIInventorySlots.Where(slot => {
+            return RectTransformUtility.RectangleContainsScreenPoint(slot.transform as RectTransform , mousePos);
+        }).ToArray();
+        GameObject? dropSlot = null;
+
+        if (dropSlotArr.Count() > 0) {
+            dropSlot = dropSlotArr[0];
+        }
+
+        return dropSlot == null ? null : dropSlot.GetComponent<UIInventorySlot>();
     }
 }

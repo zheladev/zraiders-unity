@@ -6,6 +6,13 @@ public class UISelectedItem : MonoBehaviour
     public bool isItemSelected;
     private Image selectedItemSprite;
     private Item selectedItem;
+    
+    private UIInventorySlot _selectedItemUIInventorySlot;
+    public UIInventorySlot selectedItemUIInventorySlot 
+    {
+        get { return _selectedItemUIInventorySlot; }
+        set { _selectedItemUIInventorySlot = value; }
+    }
 
     void Awake()
     {
