@@ -8,7 +8,7 @@ public class InventorySystem
     public InventorySystem()
     {
         items = new List<Item>();
-        slots = 191;
+        slots = 37 * 7;
     }
 
     public void AddItem(Item item)
