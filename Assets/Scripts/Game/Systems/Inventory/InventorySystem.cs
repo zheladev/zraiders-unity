@@ -11,24 +11,28 @@ public class InventorySystem
         slots = 37 * 7;
     }
 
-    public void AddItem(Item item)
+    public void AddItem(Item item, int id)
     {
+        //check if valid id
+        if (id >= items.Count || id < 0) return;
+
         //TODO: check if inventory full
         if (item.isStackable)
         {
             Item _item = items.Find(i => item.id == i.id);
+            //TODO: will give issues when swapping around with stackable items
             if (_item != null)
             {
                 _item.stackSize += 1;
             }
             else
             {
-                items.Add(new Item(item));
+                items[id] = item;
             }
         }
         else
         {
-            items.Add(new Item(item));
+            items[id] = item;
         }
     }
 

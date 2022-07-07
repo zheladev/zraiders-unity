@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
 {
-    public List<GameObject> slots;
+    public List<UIInventorySlot> slots;
     [SerializeField]
     private GameObject slotPrefab;
 
@@ -17,12 +17,11 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
     // Start is called before the first frame update
     void Awake()
     {
-        slots = new List<GameObject>();
+        slots = new List<UIInventorySlot>();
         //load resource for prefab?
         
         inventoryManager = GameObject.FindGameObjectWithTag(GameObjectTags.INVENTORY_MANAGER).GetComponent(typeof (InventoryManager)) as InventoryManager;
         inventoryManager.Attach(this);
-        //draw all prefabs
     }
 
     void Start()
@@ -30,17 +29,17 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
         inventoryGridUI = GetComponentInChildren<GridLayoutGroup>();
         inventoryGridUITransform = inventoryGridUI.transform;
 
-        //instantiate
+        //instantiate slots
         for(int i = 0; i < inventoryManager.inventorySystem.slots; i++)
         {
-            slots.Add(Instantiate(slotPrefab, inventoryGridUITransform));
+            UIInventorySlot uislot = Instantiate(slotPrefab, inventoryGridUITransform).GetComponentInChildren<UIInventorySlot>() as UIInventorySlot;
+            uislot.slotId = i;
+            uislot.inventoryManager = inventoryManager;
+            slots.Add(uislot);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        //pass slot list to manager
+        inventoryManager.UIslots = slots;
     }
 
     void OnDestroy()
@@ -53,7 +52,7 @@ public class UIInventory : MonoBehaviour, IObserver<InventoryPayload>
     {
         if (payload.inventorySlot < slots.Count)
         {
-            (slots[payload.inventorySlot].GetComponentInChildren<UIInventorySlot>() as UIInventorySlot).UpdateItem(payload.item);
+            slots[payload.inventorySlot].UpdateItem(payload.item);
         }
     }
 }

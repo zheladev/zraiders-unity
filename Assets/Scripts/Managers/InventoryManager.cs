@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour, IObservable<InventoryPayload>
 
     List<IObserver<InventoryPayload>> _observers;
 
-    // Start is called before the first frame update
+    public List<UIInventorySlot> UIslots { get; set; }
 
     void Awake()
     {
@@ -15,19 +15,65 @@ public class InventoryManager : MonoBehaviour, IObservable<InventoryPayload>
         inventorySystem = DataManagerSingleton.Instance.inventorySystem;
     }
 
-    void Start()
+    //if not provided a slot id, inserts in first empty slot
+    public void AddItemById(int id)
     {
-        
+        Item i = ItemDatabaseSingleton.Instance.GetItemById(id);
+        if (i != null)
+        {
+            //check first empty inventory slot
+            int firstEmptySlot = FirstEmptyInventorySlot();
+            if (firstEmptySlot >= 0)
+            {
+                inventorySystem.AddItem(i, firstEmptySlot);
+                InventoryPayload ip = new InventoryPayload(i, firstEmptySlot);
+                Notify(ip);
+            }
+        }
     }
 
-    public void AddItem(Item iDef)
+    public void AddItemById(int id, int slotId)
     {
-        inventorySystem.AddItem(iDef);
+        Item i = ItemDatabaseSingleton.Instance.GetItemById(id);
+        if (i != null)
+        {
+            inventorySystem.AddItem(i, slotId);
+            InventoryPayload ip = new InventoryPayload(i, slotId);
+            Notify(ip);
+        }
+    }
+
+    private int FirstEmptyInventorySlot()
+    {
+        int idx = UIslots.FindIndex(slot => slot.item == null);
+        return idx;
+    }
+
+    public void AddItem(Item item)
+    {
+        int firstEmptySlot = FirstEmptyInventorySlot();
+        if (firstEmptySlot >= 0)
+        {
+            inventorySystem.AddItem(item, firstEmptySlot);
+            InventoryPayload ip = new InventoryPayload(item, firstEmptySlot);
+            Notify(ip);
+        }
+    }
+
+    public void AddItem(Item item, int slotId)
+    {
+
+        inventorySystem.AddItem(item, slotId);
+        InventoryPayload ip = new InventoryPayload(item, slotId);
+        Notify(ip);
+
     }
 
     public void RemoveItem(int index)
     {
         inventorySystem.RemoveItem(index);
+        InventoryPayload ip = new InventoryPayload(null, index);
+        Notify(ip);
     }
 
     public void Attach(IObserver<InventoryPayload> observer)
